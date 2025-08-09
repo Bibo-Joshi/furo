@@ -113,7 +113,6 @@ if "READTHEDOCS" in os.environ:
 # -- Options for theme development -------------------------------------------
 # Make sure these are all set to the default values.
 
-html_js_files = []
 html_context: Dict[str, Any] = {}
 # html_show_sphinx = False
 # html_show_copyright = False
@@ -123,22 +122,11 @@ RTD_TESTING = False
 if RTD_TESTING or "FURO_RTD_TESTING" in os.environ:
     del html_theme_options["footer_icons"]
 
-    html_css_files += [
-        "https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css",
-        "https://assets.readthedocs.org/static/css/badge_only.css",
-    ]
     html_js_files += [
-        "readthedocs-dummy.js",
-        "https://assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js",
+        "https://raw.githubusercontent.com/readthedocs/addons/main/dist/readthedocs-addons.js",
     ]
-    html_context["READTHEDOCS"] = True
-    html_context["current_version"] = "latest"
-    html_context["conf_py_path"] = "/docs/"
-    html_context["display_github"] = True
-    html_context["github_user"] = "pradyunsg"
-    html_context["github_repo"] = "furo"
-    html_context["github_version"] = "main"
-    html_context["slug"] = "furo"
+    html_context["current_version"] = os.environ.get("READTHEDOCS_VERSION")
+    html_context["slug"] = os.environ.get("READTHEDDOCS_PROJECT")
 
 FONT_AWESOME_TESTING = False
 if FONT_AWESOME_TESTING:

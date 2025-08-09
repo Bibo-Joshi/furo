@@ -162,6 +162,20 @@ function setup() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// Set up Read the Docs search
+////////////////////////////////////////////////////////////////////////////////
+// See https://docs.readthedocs.com/platform/stable/addons.html#integrate-with-search-as-you-type
+const selector = "input.sidebar-search";
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    // Trigger Read the Docs' search addon instead of the default search
+    document.querySelector(selector).addEventListener("click", (e) => {
+        const event = new CustomEvent("readthedocs-search-show");
+        document.dispatchEvent(event);
+    });
+});
+
+////////////////////////////////////////////////////////////////////////////////
 // Main entrypoint
 ////////////////////////////////////////////////////////////////////////////////
 function main() {
