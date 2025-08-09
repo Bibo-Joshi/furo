@@ -99,9 +99,9 @@ html_theme_options: Dict[str, Any] = {
             "class": "",
         },
     ],
-    "source_repository": "https://github.com/pradyunsg/furo/",
-    "source_branch": "main",
-    "source_directory": "docs/",
+    # "source_repository": "https://github.com/pradyunsg/furo/",
+    # "source_branch": "main",
+    # "source_directory": "docs/",
 }
 
 if "READTHEDOCS" in os.environ:
